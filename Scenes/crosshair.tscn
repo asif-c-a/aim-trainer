@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://diw5ycygvb74e"]
+
+[ext_resource type="Script" uid="uid://cjsk3lyoax4sg" path="res://crosshair.gd" id="1_rtxwy"]
+
+[node name="Crosshair" type="CanvasLayer" unique_id=586250355 node_paths=PackedStringArray("crosshair_container")]
+follow_viewport_enabled = true
+script = ExtResource("1_rtxwy")
+crosshair_container = NodePath("Control")
+crosshair_code = "0;s;1;P;c;5;o;0;f;0;0l;2;0v;2;0g;1;0o;1;0a;1;0f;0;1b;0"
+
+[node name="Control" type="Control" parent="." unique_id=1147434615]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dgslk1c5vl7n6"]
+
+[ext_resource type="Texture2D" uid="uid://da0rh74vjrtne" path="res://Skybox/02_golden_hour.png" id="1_nes3m"]
+[ext_resource type="PackedScene" uid="uid://j16nbafe6llb" path="res://Scenes/player.tscn" id="2_vy56e"]
+[ext_resource type="Texture2D" uid="uid://kh4hhwee1blt" path="res://Dark/texture_08.png" id="3_0pdfm"]
+[ext_resource type="Script" uid="uid://bs16v2akpp67u" path="res://Scripts/spawn_area.gd" id="4_vy56e"]
+[ext_resource type="PackedScene" uid="uid://ctqsup1ih65iv" path="res://Scenes/hit_spheres.tscn" id="5_0pdfm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_onrkg"]
+panorama = ExtResource("1_nes3m")
+filter = false
+
+[sub_resource type="Sky" id="Sky_jotil"]
+sky_material = SubResource("PanoramaSkyMaterial_onrkg")
+
+[sub_resource type="Environment" id="Environment_44gc5"]
+background_mode = 2
+sky = SubResource("Sky_jotil")
+sky_rotation = Vector3(0, -3.9357173, 0)
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+albedo_texture = ExtResource("3_0pdfm")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+material = SubResource("StandardMaterial3D_57qmd")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(5.461914, 1.8759766, 5.2458496)
+
+[node name="TestWorld" type="Node3D" unique_id=891844920]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1776823759]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=205712641]
+environment = SubResource("Environment_44gc5")
+
+[node name="Player" parent="." unique_id=595258364 instance=ExtResource("2_vy56e")]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1043729540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1275807924]
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1397075587]
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="SpawnArea" type="Area3D" parent="." unique_id=1271005085 node_paths=PackedStringArray("coll_shape")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3185325, -6.4281707)
+script = ExtResource("4_vy56e")
+hit_spheres = ExtResource("5_0pdfm")
+coll_shape = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnArea" unique_id=727503211]
+shape = SubResource("BoxShape3D_g4v7s")
