@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://j16nbafe6llb"]
 
 [ext_resource type="PackedScene" uid="uid://qtygbe107qo7" path="res://Scenes/vandal.tscn" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://gqte86clfca1" path="res://Player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://gqte86clfca1" path="res://Scripts/Player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://btkyl37sav0vy" path="res://Scenes/sheriff.tscn" id="3_fkybt"]
 [ext_resource type="PackedScene" uid="uid://diw5ycygvb74e" path="res://Scenes/crosshair.tscn" id="3_hqtel"]
 [ext_resource type="PackedScene" uid="uid://vrtntsoc4tco" path="res://Scenes/ui.tscn" id="4_sweqy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
 
-[node name="Player" type="CharacterBody3D" unique_id=595258364 node_paths=PackedStringArray("head", "gun", "hitscan_ray", "ui_scene")]
+[node name="Player" type="CharacterBody3D" unique_id=595258364 node_paths=PackedStringArray("head", "guns", "hitscan_ray", "ui_scene")]
 script = ExtResource("1_onrkg")
 valorant_sens = 0.85
 head = NodePath("Head")
-gun = NodePath("Head/Vandal")
+guns = [NodePath("Head/Vandal"), NodePath("Head/Sheriff")]
+max_bullets = 1
 gun_recoil_rotation = -6.0
 hitscan_ray = NodePath("Head/RayCast3D")
 random_strength = 0.01
@@ -27,6 +29,9 @@ fov = 74.0
 
 [node name="Vandal" parent="Head" unique_id=1372694169 instance=ExtResource("1_4flbx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.645, 0.19, -0.26, -0.37)
+
+[node name="Sheriff" parent="Head" unique_id=1325473150 instance=ExtResource("3_fkybt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.645, 0.19, -0.135, -0.27)
 
 [node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=981981399]
 target_position = Vector3(0, 0, -75)

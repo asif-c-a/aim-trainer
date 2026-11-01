@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vrtntsoc4tco"]
 
-[ext_resource type="Script" uid="uid://mfo5dkmhwvy2" path="res://ui.gd" id="1_2246s"]
+[ext_resource type="Script" uid="uid://mfo5dkmhwvy2" path="res://Scripts/ui.gd" id="1_2246s"]
 [ext_resource type="Texture2D" uid="uid://c536xs8x3t17k" path="res://Fonts/vandal_ui.png" id="2_q7pk6"]
 [ext_resource type="Texture2D" uid="uid://dg3ra0srckvk7" path="res://Fonts/ammo_ui.png" id="3_m78vo"]
 [ext_resource type="FontFile" uid="uid://dlvba7duscpqb" path="res://Fonts/Montserrat-Bold.ttf" id="4_smcll"]

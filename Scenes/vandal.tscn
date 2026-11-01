@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://qtygbe107qo7"]
 
-[ext_resource type="Script" uid="uid://cswiw08cevaj" path="res://gun.gd" id="1_6o2bw"]
-[ext_resource type="ArrayMesh" uid="uid://b8g1eg2ris7ku" path="res://Vandal/vandal_mesh.res" id="1_at1i0"]
-[ext_resource type="ArrayMesh" uid="uid://ca353fse0nh7e" path="res://Vandal/vandal_pullback.res" id="2_6o2bw"]
-[ext_resource type="AudioStream" uid="uid://6skfembuwkxw" path="res://Vandal/vandal_shoot.mp3" id="4_aexbv"]
+[ext_resource type="Script" uid="uid://cswiw08cevaj" path="res://Scripts/gun.gd" id="1_6o2bw"]
+[ext_resource type="ArrayMesh" uid="uid://dtak3kl2t435a" path="res://Vandal/vandal_mesh.res" id="1_at1i0"]
+[ext_resource type="ArrayMesh" uid="uid://xeujijkstu6q" path="res://Vandal/vandal_pullback.res" id="2_6o2bw"]
+[ext_resource type="AudioStream" uid="uid://ywugjr3w22yv" path="res://Vandal/vandal_shoot.mp3" id="4_aexbv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44gc5"]
 emission_enabled = true
@@ -64,6 +64,8 @@ _data = {
 script = ExtResource("1_6o2bw")
 anim = NodePath("AnimationPlayer")
 soun = NodePath("AudioStreamPlayer3D")
+gun_name = "Vandal"
+sprayable = true
 
 [node name="VandalMesh" type="MeshInstance3D" parent="." unique_id=1871899459]
 transform = Transform3D(-0.28, 0, -4.2278824e-08, 0, 0.28, 0, 4.2278824e-08, 0, -0.28, 0, 0, 0)

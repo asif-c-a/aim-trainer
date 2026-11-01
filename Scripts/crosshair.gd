@@ -1,4 +1,3 @@
-
 extends CanvasLayer
 
 @export var crosshair_container: Control

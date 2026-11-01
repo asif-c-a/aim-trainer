@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var head: Camera3D
 
 @export_category("Gun Settings")
-@export var gun: Node3D
+@export var guns: Array[Node3D]
 @export var max_bullets: int = 3
 @export var gun_recoil_kick: float = 0.15
 @export var gun_recoil_rotation: float = 6.0
@@ -30,12 +30,15 @@ var rng = RandomNumberGenerator.new()
 var shake_strength: float = 0.0
 var head_default_position: Vector3
 
+var gun: Node3D
+var curr_gun: int = 0
 var default_gun_pos: Vector3
 var default_gun_rot: Vector3
 var target_gun_pos: Vector3
 var target_gun_rot: Vector3
 
 func _ready() -> void:
+	gun = guns[curr_gun]
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if gun:
 		if "fire_rate" in gun:
@@ -56,11 +59,46 @@ func _unhandled_input(event: InputEvent) -> void:
 		_move_head(event.relative)
 
 func _process(delta: float) -> void:
+	if !gun.sprayable:
+		max_bullets = 1
+	else:
+		max_bullets = 3
+	
 	shoot_timer -= delta
 	ui_scene._ammo(bullets)
 	_shoot()
 	_calculate_screenshake(delta)
 	_update_gun_recoil(delta)
+	_select_gun()
+
+func _select_gun():
+	if Input.is_action_just_released("scroll_down") and curr_gun < guns.size() - 1:
+		guns[curr_gun].visible = false
+		guns[curr_gun + 1].visible = true
+		gun = guns[curr_gun + 1]
+		curr_gun += 1
+		
+		if "fire_rate" in gun:
+			gun.fire_rate = gun.fire_rate
+		shot_time = 1.0 / 9.75
+		default_gun_pos = gun.position
+		default_gun_rot = gun.rotation
+		target_gun_pos = default_gun_pos
+		target_gun_rot = default_gun_rot
+	elif Input.is_action_just_released("scroll_up") and curr_gun > 0:
+		guns[curr_gun].visible = false
+		guns[curr_gun - 1].visible = true
+		gun = guns[curr_gun - 1]
+		curr_gun -= 1
+
+		if "fire_rate" in gun:
+			gun.fire_rate = gun.fire_rate
+		shot_time = 1.0 / 9.75
+		default_gun_pos = gun.position
+		default_gun_rot = gun.rotation
+		target_gun_pos = default_gun_pos
+		target_gun_rot = default_gun_rot
+
 
 func _move_head(motion: Vector2) -> void:
 	var rotation_amount = motion * valorant_sens * VALORANT_SCALAR

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dgrok1oqmgaq0"]
+
+[ext_resource type="FontFile" uid="uid://0tsps51tu8qm" path="res://Fonts/Montserrat-Bold.ttf" id="1_emv3i"]
+[ext_resource type="Script" uid="uid://ip7gdykphd3o" path="res://Scripts/pause_menu.gd" id="1_k0w1u"]
+
+[sub_resource type="Theme" id="Theme_k0w1u"]
+default_font = ExtResource("1_emv3i")
+default_font_size = 32
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=2038464554]
+script = ExtResource("1_k0w1u")
+
+[node name="Settings" type="ColorRect" parent="." unique_id=201819030]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45490196)
+
+[node name="SensitivityLabel" type="RichTextLabel" parent="Settings" unique_id=294074834]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 111.0
+offset_right = 467.0
+offset_bottom = 159.0
+theme = SubResource("Theme_k0w1u")
+bbcode_enabled = true
+text = "Sensitivity"
+fit_content = true
+scroll_active = false
+
+[node name="SensitivityField" type="LineEdit" parent="Settings" unique_id=428130380]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 111.0
+offset_right = 875.0
+offset_bottom = 152.0
+text = "0.88"
+virtual_keyboard_enabled = false
+caret_blink = true

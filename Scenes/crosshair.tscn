@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://diw5ycygvb74e"]
 
-[ext_resource type="Script" uid="uid://cjsk3lyoax4sg" path="res://crosshair.gd" id="1_rtxwy"]
+[ext_resource type="Script" uid="uid://cjsk3lyoax4sg" path="res://Scripts/crosshair.gd" id="1_rtxwy"]
 
 [node name="Crosshair" type="CanvasLayer" unique_id=586250355 node_paths=PackedStringArray("crosshair_container")]
 follow_viewport_enabled = true
