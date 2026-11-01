@@ -6,29 +6,40 @@ extends CharacterBody3D
 @export var moving: bool = false
 @export var max_move_speed: float = 6.75
 
+@export var head_scale: float = 1.0
+
 var move_speed = 3.5
 var direction = Vector3(1, 0, 0)
 var spawned = false
 
+var strafer: bool = true
 var timer = 1
 
+func _ready() -> void:
+	move_speed = randf_range(max_move_speed / 2, max_move_speed)
+	mesh[0].scale = Vector3(head_scale, head_scale, head_scale)
+
+
 func _physics_process(delta: float) -> void:
-	timer -= delta
 	if moving:
 		velocity = direction * move_speed
 		move_and_slide()
 	
-	if timer <= 0:
-		direction = -direction
-		move_speed = randf_range(max_move_speed / 2, max_move_speed)
-		timer = randf_range(0.4, 1.6)
+	if strafer:
+		if timer <= 0:
+			direction = -direction
+			move_speed = randf_range(max_move_speed / 2, max_move_speed)
+			timer = randf_range(0.4, 1.6)
+		else:
+			timer -= delta
 
 func _hit():
 	for i in mesh.size():
 		mesh[i].visible = false
 	particles.emitting = true
 	if !spawned:
-		get_parent()._spawn_man()
+		if get_parent().has_method("_spawn_man"):
+			get_parent()._spawn_man()
 		spawned = true
 
 func _on_gpu_particles_3d_finished() -> void:

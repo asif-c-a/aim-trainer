@@ -32,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.645, 0.19, -0.26, -0.37)
 
 [node name="Sheriff" parent="Head" unique_id=1325473150 instance=ExtResource("3_fkybt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.645, 0.19, -0.135, -0.27)
+visible = false
 
 [node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=981981399]
 target_position = Vector3(0, 0, -75)

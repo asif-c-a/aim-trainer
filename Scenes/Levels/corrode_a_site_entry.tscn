@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://dbyi8jrn6wjdx"]
+
+[ext_resource type="Texture2D" uid="uid://kh4hhwee1blt" path="res://PrototypeTextures/dark_prototype.png" id="1_7ec3l"]
+[ext_resource type="Texture2D" uid="uid://b3c1owl3ihvnp" path="res://Skybox/02_golden_hour.png" id="1_kyccl"]
+[ext_resource type="Texture2D" uid="uid://cxx5r603rpxhd" path="res://PrototypeTextures/orange_prototype.png" id="2_kyccl"]
+[ext_resource type="PackedScene" uid="uid://j16nbafe6llb" path="res://Scenes/player.tscn" id="3_vkrvv"]
+[ext_resource type="Texture2D" uid="uid://cwu0bnitl3bsa" path="res://PrototypeTextures/green_prototype2.png" id="5_vkrvv"]
+[ext_resource type="Script" uid="uid://bw7nuvetgmqpw" path="res://Scenes/Levels/trade_spawner.gd" id="6_ihhe6"]
+[ext_resource type="PackedScene" uid="uid://cyf50ytq47aa4" path="res://Scenes/hit_men.tscn" id="7_ybtie"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vkrvv"]
+panorama = ExtResource("1_kyccl")
+filter = false
+
+[sub_resource type="Sky" id="Sky_jotil"]
+sky_material = SubResource("PanoramaSkyMaterial_vkrvv")
+
+[sub_resource type="Environment" id="Environment_ihhe6"]
+background_mode = 2
+sky = SubResource("Sky_jotil")
+sky_rotation = Vector3(0, -3.9357173, 0)
+ssao_enabled = true
+glow_enabled = true
+fog_mode = 1
+fog_light_energy = 1.21
+fog_sun_scatter = 0.32
+fog_density = 1.0
+fog_aerial_perspective = 1.0
+fog_height = 63.9
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57qmd"]
+albedo_texture = ExtResource("1_7ec3l")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yf5fn"]
+material = SubResource("StandardMaterial3D_57qmd")
+size = Vector2(30, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf5fn"]
+albedo_texture = ExtResource("2_kyccl")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+material = SubResource("StandardMaterial3D_yf5fn")
+size = Vector3(2, 10, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kyccl"]
+material = SubResource("StandardMaterial3D_yf5fn")
+size = Vector3(17, 10, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vkrvv"]
+material = SubResource("StandardMaterial3D_yf5fn")
+size = Vector3(6, 4, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyccl"]
+albedo_texture = ExtResource("5_vkrvv")
+
+[sub_resource type="BoxMesh" id="BoxMesh_yf5fn"]
+material = SubResource("StandardMaterial3D_kyccl")
+size = Vector3(2, 2, 2)
+
+[node name="CorrodeASiteEntry" type="Node3D" unique_id=1000960925]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=502671513]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=326834133]
+environment = SubResource("Environment_ihhe6")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=491849801]
+mesh = SubResource("PlaneMesh_yf5fn")
+
+[node name="Wall" type="MeshInstance3D" parent="." unique_id=1970101968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5.0024037, 0)
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="Wall4" type="MeshInstance3D" parent="." unique_id=1665921049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.0024037, -6)
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="Wall6" type="MeshInstance3D" parent="." unique_id=2142156068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2.0024037, 4)
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="Wall2" type="MeshInstance3D" parent="." unique_id=1889082196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 5.0024037, 7)
+mesh = SubResource("BoxMesh_kyccl")
+
+[node name="Wall5" type="MeshInstance3D" parent="." unique_id=1971731973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.0024037, -14)
+mesh = SubResource("BoxMesh_kyccl")
+
+[node name="Wall3" type="MeshInstance3D" parent="." unique_id=1236246081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.0024037, -4)
+mesh = SubResource("BoxMesh_vkrvv")
+
+[node name="Player" parent="." unique_id=595258364 instance=ExtResource("3_vkrvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9877646, 0.00045621395, 0.32855082)
+valorant_sens = 0.35
+
+[node name="Radionite Box" type="MeshInstance3D" parent="." unique_id=843605088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -9)
+mesh = SubResource("BoxMesh_yf5fn")
+
+[node name="Radionite Box2" type="MeshInstance3D" parent="." unique_id=292430464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, 5.204212)
+mesh = SubResource("BoxMesh_yf5fn")
+
+[node name="TradeSpawner" type="Node3D" parent="." unique_id=1297457608 node_paths=PackedStringArray("target_pos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
+script = ExtResource("6_ihhe6")
+hit_man = ExtResource("7_ybtie")
+target_pos = NodePath("../Target")
+
+[node name="Target" type="Marker3D" parent="." unique_id=307483605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7546325, 0, 4)

@@ -13,12 +13,12 @@
 panorama = ExtResource("1_nes3m")
 filter = false
 
-[sub_resource type="Sky" id="Sky_jotil"]
+[sub_resource type="Sky" id="Sky_g0og0"]
 sky_material = SubResource("PanoramaSkyMaterial_onrkg")
 
 [sub_resource type="Environment" id="Environment_44gc5"]
 background_mode = 2
-sky = SubResource("Sky_jotil")
+sky = SubResource("Sky_g0og0")
 sky_rotation = Vector3(0, -3.9357173, 0)
 ssao_enabled = true
 glow_enabled = true

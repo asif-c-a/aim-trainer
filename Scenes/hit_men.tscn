@@ -69,7 +69,6 @@ height = 0.15
 script = ExtResource("1_6a42r")
 mesh = [NodePath("hit_man_head"), NodePath("hit_man_body")]
 particles = NodePath("GPUParticles3D")
-max_move_speed = 4.05
 
 [node name="hit_man_body" type="MeshInstance3D" parent="." unique_id=408471411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6867578, 0)

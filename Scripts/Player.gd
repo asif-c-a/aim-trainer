@@ -77,28 +77,23 @@ func _select_gun():
 		guns[curr_gun + 1].visible = true
 		gun = guns[curr_gun + 1]
 		curr_gun += 1
+		_update_gun_stats()
 		
-		if "fire_rate" in gun:
-			gun.fire_rate = gun.fire_rate
-		shot_time = 1.0 / 9.75
-		default_gun_pos = gun.position
-		default_gun_rot = gun.rotation
-		target_gun_pos = default_gun_pos
-		target_gun_rot = default_gun_rot
 	elif Input.is_action_just_released("scroll_up") and curr_gun > 0:
 		guns[curr_gun].visible = false
 		guns[curr_gun - 1].visible = true
 		gun = guns[curr_gun - 1]
 		curr_gun -= 1
+		_update_gun_stats()
 
-		if "fire_rate" in gun:
+func _update_gun_stats():
+	if "fire_rate" in gun:
 			gun.fire_rate = gun.fire_rate
-		shot_time = 1.0 / 9.75
-		default_gun_pos = gun.position
-		default_gun_rot = gun.rotation
-		target_gun_pos = default_gun_pos
-		target_gun_rot = default_gun_rot
-
+	shot_time = 1.0 / 9.75
+	default_gun_pos = gun.position
+	default_gun_rot = gun.rotation
+	target_gun_pos = default_gun_pos
+	target_gun_rot = default_gun_rot
 
 func _move_head(motion: Vector2) -> void:
 	var rotation_amount = motion * valorant_sens * VALORANT_SCALAR
