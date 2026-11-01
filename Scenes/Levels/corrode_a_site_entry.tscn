@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cxx5r603rpxhd" path="res://PrototypeTextures/orange_prototype.png" id="2_kyccl"]
 [ext_resource type="PackedScene" uid="uid://j16nbafe6llb" path="res://Scenes/player.tscn" id="3_vkrvv"]
 [ext_resource type="Texture2D" uid="uid://cwu0bnitl3bsa" path="res://PrototypeTextures/green_prototype2.png" id="5_vkrvv"]
-[ext_resource type="Script" uid="uid://bw7nuvetgmqpw" path="res://Scenes/Levels/trade_spawner.gd" id="6_ihhe6"]
+[ext_resource type="Script" uid="uid://bw7nuvetgmqpw" path="res://Scripts/trade_spawner.gd" id="6_ihhe6"]
 [ext_resource type="PackedScene" uid="uid://cyf50ytq47aa4" path="res://Scenes/hit_men.tscn" id="7_ybtie"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vkrvv"]
