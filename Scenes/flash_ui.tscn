@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bpget4jxqutxx"]
+
+[ext_resource type="Script" uid="uid://dqalq76lefw4h" path="res://Scripts/flash_ui.gd" id="1_gjayn"]
+[ext_resource type="Texture2D" uid="uid://c1kpcl27slwn2" path="res://flash.png" id="2_002xv"]
+
+[node name="Flash" type="CanvasLayer" unique_id=1285728488 node_paths=PackedStringArray("flash_img")]
+script = ExtResource("1_gjayn")
+flash_img = NodePath("Flash")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1058696060]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5372549, 0.5372549, 0.5372549, 1)
+
+[node name="Flash" type="Sprite2D" parent="." unique_id=1906105324]
+position = Vector2(965.4, 598.74994)
+scale = Vector2(0.5010416, 0.50104165)
+texture = ExtResource("2_002xv")

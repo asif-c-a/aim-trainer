@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ctqsup1ih65iv" path="res://Scenes/hit_spheres.tscn" id="5_0pdfm"]
 [ext_resource type="PackedScene" uid="uid://cyf50ytq47aa4" path="res://Scenes/hit_men.tscn" id="7_3hk28"]
 [ext_resource type="Script" uid="uid://cq0so7ngml1ef" path="res://Scripts/death.gd" id="8_g0og0"]
+[ext_resource type="PackedScene" uid="uid://bjsxddnk5dxet" path="res://Scenes/podium.tscn" id="9_ni8gw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_onrkg"]
 panorama = ExtResource("1_nes3m")
@@ -124,6 +125,13 @@ script = ExtResource("8_g0og0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_57qmd")
 debug_color = Color(0.75686276, 0, 0.20784314, 1)
+
+[node name="Podium" parent="." unique_id=1893318954 node_paths=PackedStringArray("spawn_position") instance=ExtResource("9_ni8gw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, 0)
+spawn_position = NodePath("Spawn_point")
+
+[node name="Spawn_point" type="Marker3D" parent="Podium" unique_id=98758629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.7484558e-07)
 
 [connection signal="body_entered" from="Death" to="Death" method="_on_body_entered"]
 [connection signal="body_entered" from="Death2" to="Death2" method="_on_body_entered"]

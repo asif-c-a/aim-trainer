@@ -19,7 +19,8 @@ extends CharacterBody3D
 @export var backward_kick_strength: float = 0.12
 
 @export_category("UI Settings")
-@export var ui_scene : CanvasLayer
+@export var ui_scene: CanvasLayer
+@export var flash_ui: CanvasLayer
 
 const VALORANT_SCALAR: float = 0.00122173
 var mouse_motion: Vector2 = Vector2.ZERO
@@ -37,17 +38,14 @@ var default_gun_rot: Vector3
 var target_gun_pos: Vector3
 var target_gun_rot: Vector3
 
+var body_to_hit: Node3D = null
+var should_hit: bool = false
+
 func _ready() -> void:
+	flash_ui.visible = false
 	gun = guns[curr_gun]
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if gun:
-		if "fire_rate" in gun:
-			gun.fire_rate = gun.fire_rate
-		shot_time = 1.0 / 9.75
-		default_gun_pos = gun.position
-		default_gun_rot = gun.rotation
-		target_gun_pos = default_gun_pos
-		target_gun_rot = default_gun_rot
+	_update_gun_stats()
 	
 	if head:
 		head_default_position = head.position
@@ -70,6 +68,12 @@ func _process(delta: float) -> void:
 	_calculate_screenshake(delta)
 	_update_gun_recoil(delta)
 	_select_gun()
+
+func _physics_process(_delta: float) -> void:
+	if should_hit:
+		body_to_hit._hit(self)
+		body_to_hit = null
+		should_hit = false
 
 func _select_gun():
 	if Input.is_action_just_released("scroll_down") and curr_gun < guns.size() - 1:
@@ -114,7 +118,9 @@ func _shoot() -> void:
 
 		if hitscan_ray.is_colliding():
 			if hitscan_ray.get_collider().has_method("_hit"):
-				hitscan_ray.get_collider()._hit()
+				# hitscan_ray.get_collider()._hit(self)
+				should_hit = true
+				body_to_hit = hitscan_ray.get_collider()
 	
 	if Input.is_action_just_released("fire"):
 		bullets = max_bullets
@@ -159,3 +165,12 @@ func _update_gun_recoil(delta: float) -> void:
 	
 	gun.position = lerp(gun.position, target_gun_pos, recoil_snappiness * delta)
 	gun.rotation = lerp(gun.rotation, target_gun_rot, recoil_snappiness * delta)
+
+func _check_flash_screen_pos(flash: Node3D):
+	if head.is_position_behind(flash.global_position):
+		pass
+	else:
+		var screen_pos: Vector2 = head.unproject_position(flash.global_position)
+		
+		if screen_pos.x <= get_window().size.x and screen_pos.x >= 0 and screen_pos.y >= 0 and screen_pos.y <= get_window().size.y:
+			flash_ui._flash(screen_pos)

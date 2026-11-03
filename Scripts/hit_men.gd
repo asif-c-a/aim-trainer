@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			timer -= delta
 
-func _hit():
+func _hit(pl):
 	for i in mesh.size():
 		mesh[i].visible = false
 	particles.emitting = true

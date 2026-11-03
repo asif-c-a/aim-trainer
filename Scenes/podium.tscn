@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bjsxddnk5dxet"]
+
+[ext_resource type="Script" uid="uid://wia7lna1y1p7" path="res://Scripts/podium.gd" id="1_gl0nw"]
+[ext_resource type="PackedScene" uid="uid://c4vty4640y4lr" path="res://Podium/podium.blend" id="1_hrecp"]
+[ext_resource type="PackedScene" uid="uid://cyf50ytq47aa4" path="res://Scenes/hit_men.tscn" id="2_vdnf6"]
+[ext_resource type="PackedScene" uid="uid://ctqsup1ih65iv" path="res://Scenes/hit_spheres.tscn" id="3_hx5gp"]
+[ext_resource type="PackedScene" uid="uid://b5mnr5egrxxy8" path="res://Scenes/flash.tscn" id="4_hx5gp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(0.67004395, 0.470932, 1)
+
+[node name="Podium" type="StaticBody3D" unique_id=1346928060]
+script = ExtResource("1_gl0nw")
+hit_man = ExtResource("2_vdnf6")
+hit_sphere = ExtResource("3_hx5gp")
+flash = ExtResource("4_hx5gp")
+
+[node name="podium" parent="." unique_id=515166297 instance=ExtResource("1_hrecp")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=439036442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020721436, 1.013504, 0)
+shape = SubResource("BoxShape3D_g4v7s")

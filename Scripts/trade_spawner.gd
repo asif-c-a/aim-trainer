@@ -27,7 +27,7 @@ func _spawn_single():
 	hm.global_position = global_position
 	hm.strafer = false
 	hm.moving = true
-	hm.direction = -(global_position - target_pos.global_position).normalized()
+	hm.direction = -(global_position - target_pos.global_position + Vector3(0, 0, randf_range(-1, 1))).normalized()
 	await get_tree().create_timer(3).timeout
 	if is_instance_valid(hm):
 		hm._hit()
