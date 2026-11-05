@@ -9,6 +9,7 @@ var y : float
 var z : float
 
 @export var hit_man_spawn: bool
+@export var count: int = 5
 
 func _ready() -> void:
 	var shape = coll_shape.shape as BoxShape3D
@@ -16,7 +17,7 @@ func _ready() -> void:
 	y = shape.size.y
 	z = shape.size.z
 
-	for i in range(5):
+	for i in range(count):
 		if hit_man_spawn:
 			_spawn_man()
 		else:
