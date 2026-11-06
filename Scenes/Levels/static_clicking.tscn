@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://j16nbafe6llb" path="res://Scenes/player.tscn" id="3_stbh0"]
 [ext_resource type="Script" uid="uid://bs16v2akpp67u" path="res://Scripts/spawn_area.gd" id="4_2yeoi"]
 [ext_resource type="PackedScene" uid="uid://ctqsup1ih65iv" path="res://Scenes/hit_spheres.tscn" id="5_l4gr2"]
-[ext_resource type="ArrayMesh" uid="uid://ih7y2j0enghy" path="res://SceneModels/Stage.res" id="6_l4gr2"]
+[ext_resource type="ArrayMesh" uid="uid://dpb3qgr02sm0e" path="res://SceneModels/Stage.res" id="6_l4gr2"]
 [ext_resource type="PackedScene" uid="uid://cyf50ytq47aa4" path="res://Scenes/hit_men.tscn" id="6_pu1kb"]
 [ext_resource type="ArrayMesh" uid="uid://cswakyqd8srms" path="res://SceneModels/Stage_podium.res" id="7_pu1kb"]
 
@@ -19,6 +19,7 @@ sky_material = SubResource("PanoramaSkyMaterial_37d6a")
 background_mode = 2
 sky = SubResource("Sky_g0og0")
 sky_rotation = Vector3(0, -3.9357173, 0)
+tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
 
@@ -53,6 +54,6 @@ debug_color = Color(0.78980535, 0.16124931, 0.24188346, 1)
 [node name="Stage" type="MeshInstance3D" parent="." unique_id=404115235]
 mesh = ExtResource("6_l4gr2")
 
-[node name="StagePodium" type="MeshInstance3D" parent="." unique_id=356012275]
+[node name="Table" type="MeshInstance3D" parent="." unique_id=356012275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 mesh = ExtResource("7_pu1kb")

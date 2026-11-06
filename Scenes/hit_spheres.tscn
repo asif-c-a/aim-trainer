@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://o5k623xjoj7t" path="res://Scripts/hit_spheres.gd" id="1_48fba"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yf5fn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48fba"]
 albedo_color = Color(1, 1, 0.16862746, 1)
 emission_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_g4v7s"]
-material = SubResource("StandardMaterial3D_yf5fn")
+material = SubResource("StandardMaterial3D_48fba")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asog6"]
 emission_enabled = true

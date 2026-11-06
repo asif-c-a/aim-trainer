@@ -37,7 +37,9 @@ func _hit(pl):
 		return
 		
 	if !spawned:
-		if get_parent() and get_parent().has_method("_spawn_sphere"):
+		if get_parent() and get_parent().has_method("_flicked"):
+			get_parent()._flicked()
+		elif get_parent() and get_parent().has_method("_spawn_sphere"):
 			get_parent()._spawn_sphere()
 		spawned = true
 

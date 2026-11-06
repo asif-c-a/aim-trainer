@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://6rj1i6qm5jkb"]
+
+[ext_resource type="Texture2D" uid="uid://cxx5r603rpxhd" path="res://PrototypeTextures/orange_prototype.png" id="1_qvm2y"]
+[ext_resource type="PackedScene" uid="uid://qtygbe107qo7" path="res://Scenes/vandal.tscn" id="2_tmmas"]
+[ext_resource type="PackedScene" uid="uid://btkyl37sav0vy" path="res://Scenes/sheriff.tscn" id="3_hvtgh"]
+[ext_resource type="Texture2D" uid="uid://b3c1owl3ihvnp" path="res://Skybox/02_golden_hour.png" id="4_3amwm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pdfm"]
+albedo_texture = ExtResource("1_qvm2y")
+uv1_scale = Vector3(0.5, 0.5, 0.05)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ggkdx"]
+material = SubResource("StandardMaterial3D_0pdfm")
+size = Vector3(12.169678, 14.765381, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k5yql"]
+panorama = ExtResource("4_3amwm")
+filter = false
+
+[sub_resource type="Sky" id="Sky_g0og0"]
+sky_material = SubResource("PanoramaSkyMaterial_k5yql")
+
+[sub_resource type="Environment" id="Environment_65tea"]
+background_mode = 2
+sky = SubResource("Sky_g0og0")
+sky_rotation = Vector3(0, -3.9357173, 0)
+ssao_enabled = true
+glow_enabled = true
+
+[node name="Wall" type="MeshInstance3D" unique_id=1222084041]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_ggkdx")
+
+[node name="Vandal" parent="." unique_id=1372694169 instance=ExtResource("2_tmmas")]
+transform = Transform3D(-9.4297405e-08, 0.66680026, -0.74523646, -1.7993177e-08, 0.74523646, 0.66680026, 1, 7.628671e-08, -5.827601e-08, 0.26054144, -2.5360267e-08, 0.5801753)
+
+[node name="Sheriff" parent="." unique_id=1325473150 instance=ExtResource("3_hvtgh")]
+transform = Transform3D(1.117093e-07, 0.5831201, -0.812386, -6.2490706e-09, -0.812386, -0.5831201, -1, 7.021659e-08, -8.710711e-08, -0.020260304, -0.06938431, 0.60326636)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=652253507]
+transform = Transform3D(0.8362866, 0.49973315, -0.2255915, -0.5482926, 0.76222104, -0.34408483, -2.396663e-08, 0.41144368, 0.9114352, -0.4668133, -0.5489335, 2.5301778)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1169505037]
+transform = Transform3D(-0.8660254, -0.25000006, -0.43301275, 0, -0.8660254, 0.50000006, -0.50000006, 0.43301275, 0.75, 0, -3.425427e-08, 0.7836464)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=507898780]
+environment = SubResource("Environment_65tea")

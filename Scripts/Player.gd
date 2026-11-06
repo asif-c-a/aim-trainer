@@ -22,6 +22,8 @@ extends CharacterBody3D
 @export var ui_scene: CanvasLayer
 @export var flash_ui: CanvasLayer
 
+@export_category("Player Settings")
+
 const VALORANT_SCALAR: float = 0.00122173
 var mouse_motion: Vector2 = Vector2.ZERO
 var shoot_timer: float = 0.0
@@ -125,6 +127,12 @@ func _shoot() -> void:
 	if Input.is_action_just_released("fire"):
 		bullets = max_bullets
 		stop_shake()
+
+func _check_track(tracking_node):
+	if hitscan_ray.is_colliding():
+		if hitscan_ray.get_collider() == tracking_node:
+			return true
+	return false
 
 func _apply_shake(strength: float) -> void:
 	shake_strength = strength
