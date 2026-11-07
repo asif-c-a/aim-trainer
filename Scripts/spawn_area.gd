@@ -4,6 +4,9 @@ extends Area3D
 @export var hit_man : PackedScene
 @export var coll_shape : CollisionShape3D
 
+
+@export var manager: Manager
+
 var x : float
 var y : float
 var z : float
@@ -11,17 +14,24 @@ var z : float
 @export var hit_man_spawn: bool
 @export var count: int = 5
 
+var init: bool = false
+
 func _ready() -> void:
 	var shape = coll_shape.shape as BoxShape3D
 	x = shape.size.x
 	y = shape.size.y
 	z = shape.size.z
 
-	for i in range(count):
-		if hit_man_spawn:
-			_spawn_man()
-		else:
-			_spawn_sphere()
+func _process(_delta: float) -> void:
+	if manager.started:
+		if !init:
+			for i in range(count):
+				if hit_man_spawn:
+					_spawn_man()
+				else:
+					_spawn_sphere(Vector3.ZERO)
+			init = true
+
 
 func _get_random_position(floored: bool) -> Vector3:
 	var r_pos : Vector3
@@ -33,7 +43,7 @@ func _get_random_position(floored: bool) -> Vector3:
 	r_pos.z = randf_range(-z / 2, z / 2)
 	return r_pos
 
-func _spawn_sphere() -> void:
+func _spawn_sphere(ps) -> void:
 	var sph = hit_spheres.instantiate()
 	add_child(sph)
 	sph.global_position = global_position + _get_random_position(false)

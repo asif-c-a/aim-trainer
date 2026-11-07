@@ -40,7 +40,7 @@ func _hit(pl):
 		if get_parent() and get_parent().has_method("_flicked"):
 			get_parent()._flicked()
 		elif get_parent() and get_parent().has_method("_spawn_sphere"):
-			get_parent()._spawn_sphere()
+			get_parent()._spawn_sphere(global_position)
 		spawned = true
 
 func _on_gpu_particles_3d_finished() -> void:
