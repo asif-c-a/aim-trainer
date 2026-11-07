@@ -12,7 +12,7 @@ func _ready() -> void:
 	if particles and not particles.finished.is_connected(_on_gpu_particles_3d_finished):
 		particles.finished.connect(_on_gpu_particles_3d_finished)
 
-func _hit(pl):
+func _hit(_pl):
 	if hit:
 		return
 

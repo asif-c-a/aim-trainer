@@ -18,17 +18,17 @@ size = Vector3(12.169678, 14.765381, 1)
 panorama = ExtResource("4_3amwm")
 filter = false
 
-[sub_resource type="Sky" id="Sky_g0og0"]
+[sub_resource type="Sky" id="Sky_qvm2y"]
 sky_material = SubResource("PanoramaSkyMaterial_k5yql")
 
 [sub_resource type="Environment" id="Environment_65tea"]
 background_mode = 2
-sky = SubResource("Sky_g0og0")
+sky = SubResource("Sky_qvm2y")
 sky_rotation = Vector3(0, -3.9357173, 0)
 ssao_enabled = true
 glow_enabled = true
 
-[node name="Wall" type="MeshInstance3D" unique_id=1222084041]
+[node name="mainMenu" type="MeshInstance3D" unique_id=1222084041]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_ggkdx")
 

@@ -33,7 +33,7 @@ func _get_random_position() -> Vector3:
 	r_pos.z = randf_range(-z / 2, z / 2)
 	return r_pos
 
-func _spawn_sphere(ps) -> void:
+func _spawn_sphere(_ps) -> void:
 	var sph = hit_spheres.instantiate()
 	add_child(sph)
 	sph.global_position = global_position + _get_random_position()

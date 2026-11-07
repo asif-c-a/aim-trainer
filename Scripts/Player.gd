@@ -43,6 +43,8 @@ var target_gun_rot: Vector3
 var body_to_hit: Node3D = null
 var should_hit: bool = false
 
+var allow_input: bool = true
+
 func _ready() -> void:
 	flash_ui.visible = false
 	gun = guns[curr_gun]
@@ -66,10 +68,15 @@ func _process(delta: float) -> void:
 	
 	shoot_timer -= delta
 	ui_scene._ammo(bullets)
-	_shoot()
-	_calculate_screenshake(delta)
-	_update_gun_recoil(delta)
-	_select_gun()
+
+	if allow_input:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		_shoot()
+		_calculate_screenshake(delta)
+		_update_gun_recoil(delta)
+		_select_gun()
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _physics_process(_delta: float) -> void:
 	if should_hit:

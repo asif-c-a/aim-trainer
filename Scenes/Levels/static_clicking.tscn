@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b3c1owl3ihvnp" path="res://Skybox/02_golden_hour.png" id="2_stbh0"]
 [ext_resource type="PackedScene" uid="uid://j16nbafe6llb" path="res://Scenes/player.tscn" id="3_stbh0"]
 [ext_resource type="Script" uid="uid://1c412v6ub67l" path="res://Scripts/staticshot.gd" id="4_l4gr2"]
+[ext_resource type="PackedScene" uid="uid://ctqsup1ih65iv" path="res://Scenes/hit_spheres.tscn" id="5_l4gr2"]
 [ext_resource type="ArrayMesh" uid="uid://dpb3qgr02sm0e" path="res://SceneModels/Stage.res" id="6_l4gr2"]
 [ext_resource type="ArrayMesh" uid="uid://bvxn2tbu7xb2h" path="res://SceneModels/Stage_podium.res" id="7_pu1kb"]
 [ext_resource type="PackedScene" uid="uid://dn0mbhhvjdxb7" path="res://Scenes/start_tablet.tscn" id="8_pu1kb"]
+[ext_resource type="PackedScene" uid="uid://b76jum3ywxpyg" path="res://Scenes/Menu/pause_menu.tscn" id="9_7cl50"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_37d6a"]
 panorama = ExtResource("2_stbh0")
@@ -26,8 +28,9 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_7cl50"]
 size = Vector3(6.5214844, 2.4487305, 9.265625)
 
-[node name="StaticClicking" type="Node3D" unique_id=1969731722]
+[node name="StaticClicking" type="Node3D" unique_id=1969731722 node_paths=PackedStringArray("player")]
 script = ExtResource("1_7cl50")
+player = NodePath("Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=122022275]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -40,9 +43,12 @@ environment = SubResource("Environment_hits8")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 1.5318923, 0)
 valorant_sens = 0.35
 
-[node name="SpawnAreaBall" type="Area3D" parent="." unique_id=719661274]
+[node name="SpawnAreaBall" type="Area3D" parent="." unique_id=719661274 node_paths=PackedStringArray("coll_shape", "manager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 0)
 script = ExtResource("4_l4gr2")
+hit_spheres = ExtResource("5_l4gr2")
+coll_shape = NodePath("CollisionShape3D")
+manager = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnAreaBall" unique_id=1433708147]
 shape = SubResource("BoxShape3D_7cl50")
@@ -57,4 +63,7 @@ mesh = ExtResource("7_pu1kb")
 
 [node name="StartTablet" parent="." unique_id=1690539537 node_paths=PackedStringArray("manager") instance=ExtResource("8_pu1kb")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.9426217, 0.7366191, 0)
+manager = NodePath("..")
+
+[node name="PauseMenu" parent="." unique_id=449942686 node_paths=PackedStringArray("manager") instance=ExtResource("9_7cl50")]
 manager = NodePath("..")

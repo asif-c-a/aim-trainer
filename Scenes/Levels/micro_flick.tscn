@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ctqsup1ih65iv" path="res://Scenes/hit_spheres.tscn" id="5_jvcr0"]
 [ext_resource type="ArrayMesh" uid="uid://dpb3qgr02sm0e" path="res://SceneModels/Stage.res" id="7_s3trt"]
 [ext_resource type="ArrayMesh" uid="uid://bvxn2tbu7xb2h" path="res://SceneModels/Stage_podium.res" id="8_d8184"]
+[ext_resource type="PackedScene" uid="uid://b76jum3ywxpyg" path="res://Scenes/Menu/pause_menu.tscn" id="9_glkqg"]
 [ext_resource type="PackedScene" uid="uid://dn0mbhhvjdxb7" path="res://Scenes/start_tablet.tscn" id="9_vso5c"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_37d6a"]
@@ -27,8 +28,9 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_7cl50"]
 size = Vector3(6.5214844, 2.4487305, 9.265625)
 
-[node name="MicroFlick" type="Node3D" unique_id=1969731722]
+[node name="MicroFlick" type="Node3D" unique_id=1969731722 node_paths=PackedStringArray("player")]
 script = ExtResource("1_glkqg")
+player = NodePath("Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=122022275]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -62,4 +64,7 @@ mesh = ExtResource("8_d8184")
 
 [node name="StartTablet" parent="." unique_id=1690539537 node_paths=PackedStringArray("manager") instance=ExtResource("9_vso5c")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.9426217, 0.7366191, 0)
+manager = NodePath("..")
+
+[node name="PauseMenu" parent="." unique_id=449942686 node_paths=PackedStringArray("manager") instance=ExtResource("9_glkqg")]
 manager = NodePath("..")

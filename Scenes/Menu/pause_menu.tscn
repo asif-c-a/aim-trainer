@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b76jum3ywxpyg"]
+
+[ext_resource type="Script" uid="uid://ip7gdykphd3o" path="res://Scripts/pause_menu.gd" id="1_6pfc5"]
+[ext_resource type="FontFile" uid="uid://0tsps51tu8qm" path="res://Fonts/Montserrat-Bold.ttf" id="2_jnmi5"]
+[ext_resource type="PackedScene" uid="uid://c0l1w656sc0dq" path="res://Scenes/Menu/main_menu.tscn" id="2_mux1j"]
+
+[sub_resource type="Theme" id="Theme_gpijq"]
+default_font = ExtResource("2_jnmi5")
+default_font_size = 79
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=449942686]
+script = ExtResource("1_6pfc5")
+main_menu = ExtResource("2_mux1j")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=49909723]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="Resume" type="Button" parent="." unique_id=1813823031]
+offset_left = 83.0
+offset_top = 808.0
+offset_right = 428.0
+offset_bottom = 913.0
+theme = SubResource("Theme_gpijq")
+text = "Resume"
+flat = true
+alignment = 0
+
+[node name="QuitToMenu" type="Button" parent="." unique_id=1470803716]
+offset_left = 83.0
+offset_top = 901.0
+offset_right = 634.0
+offset_bottom = 1006.0
+theme = SubResource("Theme_gpijq")
+text = "Quit to Menu"
+flat = true
+alignment = 0
+
+[node name="QuitToDesktop" type="Button" parent="." unique_id=1205158775]
+offset_left = 83.0
+offset_top = 1006.0
+offset_right = 747.0
+offset_bottom = 1111.0
+theme = SubResource("Theme_gpijq")
+text = "Quit to Desktop"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="QuitToMenu" to="." method="_on_quit_to_menu_pressed"]
+[connection signal="pressed" from="QuitToDesktop" to="." method="_on_quit_to_desktop_pressed"]

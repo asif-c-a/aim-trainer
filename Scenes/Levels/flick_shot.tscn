@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ctqsup1ih65iv" path="res://Scenes/hit_spheres.tscn" id="4_xij3p"]
 [ext_resource type="ArrayMesh" uid="uid://bvxn2tbu7xb2h" path="res://SceneModels/Stage_podium.res" id="5_xij3p"]
 [ext_resource type="PackedScene" uid="uid://dn0mbhhvjdxb7" path="res://Scenes/start_tablet.tscn" id="7_xij3p"]
+[ext_resource type="PackedScene" uid="uid://b76jum3ywxpyg" path="res://Scenes/Menu/pause_menu.tscn" id="9_nvy78"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lletp"]
 panorama = ExtResource("1_0wk6b")
@@ -55,8 +56,9 @@ _surfaces = [{
 [sub_resource type="SphereShape3D" id="SphereShape3D_xij3p"]
 radius = 0.125
 
-[node name="FlickShot" type="Node3D" unique_id=664200280]
+[node name="FlickShot" type="Node3D" unique_id=664200280 node_paths=PackedStringArray("player")]
 script = ExtResource("1_lletp")
+player = NodePath("Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=23304094]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -104,4 +106,7 @@ shape = SubResource("SphereShape3D_xij3p")
 
 [node name="StartTablet" parent="." unique_id=1690539537 node_paths=PackedStringArray("manager") instance=ExtResource("7_xij3p")]
 transform = Transform3D(-4.371139e-08, 0, -1.0000001, 0, 1.0000001, 0, 1, 0, -4.3711392e-08, 1.9426217, 0.7366191, 0)
+manager = NodePath("..")
+
+[node name="PauseMenu" parent="." unique_id=449942686 node_paths=PackedStringArray("manager") instance=ExtResource("9_nvy78")]
 manager = NodePath("..")
